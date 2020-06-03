@@ -30,6 +30,30 @@ class ViewController: UIViewController {
         
         self.activityIndicator.stopAnimating()
     }
+    
+    @IBOutlet weak var lblText: UILabel!
+    
+    @IBAction func showAlert(_ sender: Any) {
+        
+        createAlert(title: "Do you like Swift?", message: "Do you?")
+    }
+    
+    func createAlert(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.lblText.text = "Yes. I like swift!"
+        }))
+        
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { (action) in
+            alert.dismiss(animated: true, completion: nil)
+            self.lblText.text = "No. I don't like swift."
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
 
 }
 
